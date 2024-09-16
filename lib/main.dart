@@ -4,6 +4,7 @@ import 'package:untitled1/opd/previewRegistration.dart';
 import 'package:untitled1/screen/adminScreen.dart';
 import 'package:untitled1/screen/authScreen.dart';
 import 'package:untitled1/screen/homeScreen.dart';
+import 'package:untitled1/screen/welcomeScreen.dart';
 import 'package:untitled1/opd/opdRegistration.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class _MyAppState extends State<MyApp> {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:Authscreen()
+      home:Homescreen()
     );
   }
 }

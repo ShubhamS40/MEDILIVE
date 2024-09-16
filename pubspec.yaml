@@ -65,7 +65,8 @@ flutter:
   assets:
     - assets/authlogo.png
     - assets/homelogo.png
-    - assets/inventory.jpg
+    - assets/inventory.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
