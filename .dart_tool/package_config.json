@@ -74,6 +74,24 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "flutter_vector_icons",
+      "rootUri": "file:///C:/Users/Shiva/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_vector_icons-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "fluttericon",
+      "rootUri": "file:///C:/Users/Shiva/AppData/Local/Pub/Cache/hosted/pub.dev/fluttericon-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "font_awesome_flutter",
+      "rootUri": "file:///C:/Users/Shiva/AppData/Local/Pub/Cache/hosted/pub.dev/font_awesome_flutter-10.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "google_fonts",
       "rootUri": "file:///C:/Users/Shiva/AppData/Local/Pub/Cache/hosted/pub.dev/google_fonts-6.2.1",
       "packageUri": "lib/",
@@ -194,6 +212,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "simple_gesture_detector",
+      "rootUri": "file:///C:/Users/Shiva/AppData/Local/Pub/Cache/hosted/pub.dev/simple_gesture_detector-0.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/Users/Shiva/Downloads/flutter_windows_3.24.2-stable/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -222,6 +246,12 @@
       "rootUri": "file:///C:/Users/Shiva/AppData/Local/Pub/Cache/hosted/pub.dev/string_scanner-1.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "table_calendar",
+      "rootUri": "file:///C:/Users/Shiva/AppData/Local/Pub/Cache/hosted/pub.dev/table_calendar-3.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "term_glyph",
@@ -272,7 +302,7 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2024-09-16T18:14:35.110995Z",
+  "generated": "2024-09-17T17:33:54.857773Z",
   "generator": "pub",
   "generatorVersion": "3.5.2",
   "flutterRoot": "file:///C:/Users/Shiva/Downloads/flutter_windows_3.24.2-stable/flutter",

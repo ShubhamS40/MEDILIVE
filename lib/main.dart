@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:untitled1/HospitalBedBook/HospitalBedbooking.dart';
+import 'package:untitled1/HospitalBedBook/BedStatuspage.dart';
+import 'package:untitled1/HospitalBedBook/HospitalDepartment.dart';
+import 'package:untitled1/HospitalBedBook/HospitalSelection.dart';
 import 'package:untitled1/opd/opdRecipt.dart';
 import 'package:untitled1/opd/previewRegistration.dart';
 import 'package:untitled1/screen/adminScreen.dart';
@@ -25,7 +29,7 @@ class _MyAppState extends State<MyApp> {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:Homescreen()
+      home:BedBookingPage()
     );
   }
 }

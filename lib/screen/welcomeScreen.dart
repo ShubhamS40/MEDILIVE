@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled1/screen/adminScreen.dart';
+import 'package:untitled1/screen/authScreen.dart';
 
 class Welcomescreen extends StatefulWidget {
   const Welcomescreen({super.key});
@@ -63,7 +64,7 @@ class _WelcomescreenState extends State<Welcomescreen> {
                                 Container(
                                   padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
                                   decoration: BoxDecoration(
-                                    color: Colors.lightBlueAccent, // Light Blue Button Color
+                                    color: Colors.blue[900], // Light Blue Button Color
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Center(
@@ -72,13 +73,14 @@ class _WelcomescreenState extends State<Welcomescreen> {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => Adminscreen()));
+                                                builder: (context) => Authscreen()));
                                       },
                                       child: Text(
                                         'Get Started',
                                         style: TextStyle(
                                           color: Colors.white, // Light Text Color
-                                          fontSize: 16,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold
                                         ),
                                       ),
                                     ),
