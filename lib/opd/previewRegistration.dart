@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';  // For date formatting
-import 'opdRecipt.dart';  // Make sure this file exists in your project for OPDReceiptScreen
-
+import 'package:intl/intl.dart'; // For date formatting
+import 'package:untitled1/opd/opdConfirmationRecipt.dart';
+import 'opdConfirmationRecipt.dart'; // Make sure this file exists in your project for OPDReceiptScreen
 
 class OPDPreviewScreen extends StatefulWidget {
   @override
@@ -16,10 +16,11 @@ class _OPDPreviewScreenState extends State<OPDPreviewScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'OPD Registration Preview',  // Updated title
-          style: TextStyle(color: Colors.white),
+          'OPD Registration Preview', // Updated title
+          style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.blue[800],
+        elevation: 4,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -28,11 +29,11 @@ class _OPDPreviewScreenState extends State<OPDPreviewScreen> {
             child: Container(
               padding: EdgeInsets.all(25),
               decoration: BoxDecoration(
-                color: Colors.blue[100],
-                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.blueGrey[300] ?? Colors.grey,  // Null safety
+                    color: Colors.grey.withOpacity(0.4),
                     blurRadius: 10,
                     spreadRadius: 2,
                   ),
@@ -61,20 +62,20 @@ class _OPDPreviewScreenState extends State<OPDPreviewScreen> {
         Text(
           "Hospital Name: DH JPC Hospital",
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 20,
             color: Colors.blue[900],
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 5),
+        SizedBox(height: 8),
         Text(
           "Department Name: ENT (Mon, Wed, Fri, Sat)",
-          style: TextStyle(fontSize: 16, color: Colors.blue[900]),
+          style: TextStyle(fontSize: 18, color: Colors.blue[800]),
         ),
-        SizedBox(height: 5),
+        SizedBox(height: 8),
         Text(
           "Date: ${DateFormat('dd-MM-yyyy').format(DateTime.now())}",
-          style: TextStyle(fontSize: 16, color: Colors.blue[900]),
+          style: TextStyle(fontSize: 18, color: Colors.blue[800]),
         ),
       ],
     );
@@ -96,7 +97,7 @@ class OPDForm extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildHardcodedField("Patient Name", patientName),
-        SizedBox(height: 10),
+        SizedBox(height: 15),
         Row(
           children: [
             Expanded(child: _buildHardcodedField("Age", age)),
@@ -104,13 +105,17 @@ class OPDForm extends StatelessWidget {
             Expanded(child: _buildHardcodedField("Sex", sex)),
           ],
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 15),
         _buildHardcodedField("S/o", fatherName),
+        SizedBox(height: 15),
         _buildHardcodedField("Address", address),
+        SizedBox(height: 15),
         _buildHardcodedField("Complaints", complaints),
-        _buildCheckboxField(),
-        _buildCaptchaField(),
         SizedBox(height: 20),
+        _buildCheckboxField(),
+        SizedBox(height: 15),
+
+        SizedBox(height: 25),
         _buildSubmitButtons(context),
       ],
     );
@@ -118,7 +123,7 @@ class OPDForm extends StatelessWidget {
 
   Widget _buildHardcodedField(String label, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -127,6 +132,7 @@ class OPDForm extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
+              color: Colors.blue[900],
             ),
           ),
           Expanded(
@@ -134,6 +140,7 @@ class OPDForm extends StatelessWidget {
               value,
               style: TextStyle(
                 fontSize: 16,
+                color: Colors.grey[800],
               ),
             ),
           ),
@@ -145,66 +152,59 @@ class OPDForm extends StatelessWidget {
   Widget _buildCheckboxField() {
     return Row(
       children: [
-        Checkbox(value: true, onChanged: (bool? value) {}),
+        Checkbox(
+          value: true,
+          onChanged: (bool? value) {},
+          activeColor: Colors.blue[800],
+        ),
         Expanded(
-          child: Text("All the above information is correct."),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCaptchaField() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Captcha Code: 68951",
-          style: TextStyle(fontSize: 20),
-        ),
-        SizedBox(height: 10),
-        TextFormField(  // Added TextFormField for user input
-          decoration: InputDecoration(
-            labelText: "Enter Image Characters",
-            border: OutlineInputBorder(),
+          child: Text(
+            "All the above information is correct.",
+            style: TextStyle(fontSize: 16),
           ),
         ),
       ],
     );
   }
+
+
 
   Widget _buildSubmitButtons(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => OPDReceiptScreen()),
-              );
-            },
-            child: Text('Submit'),
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text('Reset'),
-            // Optionally style the button if needed
-            // style: ElevatedButton.styleFrom(primary: Colors.red),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text('Back'),
-            // Optionally style the button if needed
-            // style: ElevatedButton.styleFrom(primary: Colors.green),
-          ),
+          _buildActionButton(context, 'Submit', Colors.blue[800], () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Opdconfirmationrecipt()),
+            );
+          }),
+          _buildActionButton(context, 'Reset', Colors.red[600], () {
+            // Reset logic can go here
+          }),
+          _buildActionButton(context, 'Back', Colors.grey[600], () {
+            Navigator.pop(context);
+          }),
         ],
       ),
     );
   }
+
+  Widget _buildActionButton(
+      BuildContext context, String label, Color? color, VoidCallback onPressed) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      child: Text(label,style: TextStyle(color: Colors.white),),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue[900],
+        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 30),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        elevation: 5,
+      ),
+    );
+  }
 }
-
-

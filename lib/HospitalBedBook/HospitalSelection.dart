@@ -23,9 +23,8 @@ class Hospitalselection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hospital Selection"),
+        title: Text("Hospital Bed Booking"),
         backgroundColor: Colors.blue[800],
-        // Make AppBar transparent to blend with gradient
         elevation: 0,
         actions: [
           IconButton(icon: Icon(Icons.dashboard), onPressed: () {}),
@@ -49,22 +48,20 @@ class Hospitalselection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Need an appointment?",
+                      "Looking for a bed?",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white, // Text color on gradient
+                        color: Colors.white,
                       ),
                     ),
                     SizedBox(height: 16),
-                    _buildStep(Icons.add, "Select Hospital"),
-                    _buildStep(Icons.check_circle_outline,
-                        "Select Mode of Appointment"),
-                    _buildStep(
-                        Icons.check_circle_outline, "Select Appointment Type"),
-                    _buildStep(Icons.add, "Select Department"),
-                    _buildStep(
-                        Icons.calendar_today, "Select Date of Appointment"),
+                    _buildStep(Icons.local_hospital, "Select Hospital"),
+                    _buildStep(Icons.event_available, "Check Bed Availability"),
+                    _buildStep(Icons.medical_services_outlined,
+                        "Select Department"),
+                    _buildStep(Icons.calendar_today,
+                        "Select Date for Booking"),
                     _buildStep(Icons.person, "Register/Login"),
                     _buildStep(Icons.sms, "Get Confirmation SMS"),
                   ],
@@ -91,57 +88,47 @@ class Hospitalselection extends StatelessWidget {
                                     width: 1, color: Colors.blue))),
                         alignment: Alignment.topLeft,
                         padding: EdgeInsets.all(16.0),
-                        // Adds padding around the content
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          // Aligns content to the start
                           children: [
                             Text(
                               "Select Hospital",
                               style: TextStyle(
-                                fontSize: 24, // Increases the font size
-                                fontWeight: FontWeight
-                                    .bold, // Makes the text bold
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                             SizedBox(height: 2),
-                            // Adds vertical space between the texts
                             Text(
                               "Type Hospital Name",
                               style: TextStyle(
-                                fontSize: 18, // Adjust font size if needed
-                                color: Colors.blue, // Makes the text color blue
+                                fontSize: 18,
+                                color: Colors.blue,
                               ),
                             ),
                             SizedBox(height: 2),
-                            // Adds vertical space between the texts
                             Text(
                               "Search Hospital",
                               style: TextStyle(
-                                fontSize: 18, // Adjust font size if needed
-                                color: Colors.blue, // Makes the text color blue
+                                fontSize: 18,
+                                color: Colors.blue,
                               ),
                             ),
                           ],
                         ),
                       ),
                       SizedBox(height: 16),
-                      // Adds spacing between the header and the list
                       Expanded(
-                        child: _buildHospitalList(), // Wrap the list in Expanded
+                        child: _buildHospitalList(),
                       ),
                       SizedBox(height: 16),
-
-                      // Adds spacing between the list and buttons
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          NormalButton(text: "Prvious",onPressed: (){},),
-                          NormalButton(text: "Next",onPressed: (){},),
+                          NormalButton(text: "Previous", onPressed: () {}),
+                          NormalButton(text: "Next", onPressed: () {}),
                         ],
                       ),
-
-                      // Buttons after the hospital list
                     ],
                   ),
                 ),
@@ -158,19 +145,17 @@ class Hospitalselection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
-          Icon(icon, color: Colors.white), // Icon color on gradient
+          Icon(icon, color: Colors.white),
           SizedBox(width: 10),
           Text(
             text,
-            style: TextStyle(
-                fontSize: 16, color: Colors.white), // Text color on gradient
+            style: TextStyle(fontSize: 16, color: Colors.white),
           ),
         ],
       ),
     );
   }
 
-  // Updated hospital list with border radius, elevation effect, and hover interaction
   Widget _buildHospitalList() {
     return ListView.builder(
       itemCount: hospitals.length,
@@ -181,17 +166,17 @@ class Hospitalselection extends StatelessWidget {
             onEnter: (_) {},
             onExit: (_) {},
             child: Material(
-              elevation: 5, // Adds shadow effect
-              borderRadius: BorderRadius.circular(10), // Rounded corners
+              elevation: 5,
+              borderRadius: BorderRadius.circular(10),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue[800], // Card background color
+                  color: Colors.blue[800],
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: ListTile(
                   title: Text(
                     hospitals[index],
-                    style: TextStyle(color: Colors.white), // White text color
+                    style: TextStyle(color: Colors.white),
                   ),
                   onTap: () {
                     Navigator.push(
@@ -209,5 +194,4 @@ class Hospitalselection extends StatelessWidget {
       },
     );
   }
-
 }

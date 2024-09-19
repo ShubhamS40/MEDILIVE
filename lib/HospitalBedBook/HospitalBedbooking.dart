@@ -41,7 +41,7 @@ class BedBookingPage extends StatelessWidget {
 
                   children: [
                     Text(
-                      "Need an appointment?",
+                      "Hospital Bed Booking For Diffrent Department",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

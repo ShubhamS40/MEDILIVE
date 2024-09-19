@@ -3,8 +3,9 @@ import 'package:untitled1/opd/opdRegistration.dart';
 
 class Button extends StatefulWidget {
   final String text;
+  final VoidCallback navigateTo; // This will handle navigation
 
-  const Button({super.key, required this.text});
+  const Button({super.key, required this.text,required this.navigateTo});
 
   @override
   State<Button> createState() => _ButtonState();
@@ -24,9 +25,7 @@ class _ButtonState extends State<Button> {
           // Define the action on button tap here if needed
         },
         child: GestureDetector(
-          onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => OPDRegistrationScreen()));
-          },
+          onTap:widget.navigateTo ,
           child: Container(
             padding: EdgeInsets.all(16.0), // Equal padding on all sides
             decoration: BoxDecoration(

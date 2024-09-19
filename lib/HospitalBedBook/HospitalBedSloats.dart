@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:untitled1/HospitalBedBook/HospitalConfirmationRecipt.dart';
 import 'package:untitled1/component/GradientColor.dart';
 
 class AvailableSlotsPage extends StatefulWidget {
@@ -22,10 +23,9 @@ class _AvailableSlotsPageState extends State<AvailableSlotsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hospital Bed Slots',style: TextStyle(color: Colors.white),),
-        backgroundColor: Colors.blue[900],  // Set AppBar color to blue
+        title: Text('Hospital Bed Slots', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.blue[900], // Set AppBar color to blue
         elevation: 0,
-
       ),
       body: GradientBackground(
         child: Row(
@@ -39,7 +39,7 @@ class _AvailableSlotsPageState extends State<AvailableSlotsPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Need an appointment?",
+                      "Select the available slots for bed",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -47,11 +47,10 @@ class _AvailableSlotsPageState extends State<AvailableSlotsPage> {
                       ),
                     ),
                     SizedBox(height: 16),
-                    _buildStep(Icons.add, "Select State/Hospital"),
-                    _buildStep(Icons.check_circle_outline, "Select Mode of Appointment"),
-                    _buildStep(Icons.check_circle_outline, "Select Appointment Type"),
-                    _buildStep(Icons.add, "Select Center/Department/Clinic"),
-                    _buildStep(Icons.calendar_today, "Select Date of Appointment"),
+                    _buildStep(Icons.local_hospital, "Select State/Hospital"),
+                    _buildStep(Icons.check_circle_outline, "Select Mode of Booking"),
+                    _buildStep(Icons.add, "Select Department"),
+                    _buildStep(Icons.calendar_today, "Select Date of Booking"),
                     _buildStep(Icons.person, "Register/Login"),
                     _buildStep(Icons.sms, "Get Confirmation SMS"),
                   ],
@@ -102,8 +101,11 @@ class _AvailableSlotsPageState extends State<AvailableSlotsPage> {
                             onDaySelected: (selectedDay, focusedDay) {
                               setState(() {
                                 _selectedDay = selectedDay;
-                                _focusedDay = focusedDay; // update `_focusedDay` here as well
+                                _focusedDay = focusedDay;
                               });
+
+                              // Show confirmation dialog when a date is selected
+                              _showConfirmationDialog(context, selectedDay);
                             },
                             calendarBuilders: CalendarBuilders(
                               defaultBuilder: (context, day, focusedDay) {
@@ -199,6 +201,56 @@ class _AvailableSlotsPageState extends State<AvailableSlotsPage> {
           ),
         ],
       ),
+    );
+  }
+
+  void _showConfirmationDialog(BuildContext context, DateTime selectedDay) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Confirm Booking"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("Hospital: SRM HOSPITAL, New Delhi"),
+              Text("Department: Cardology"),
+              Text("Mode: Bed Booking For Treatement"),
+              SizedBox(height: 10),
+
+            ],
+          ),
+          actions: [
+            GestureDetector( onTap:  () {
+              Navigator.of(context).pop(); // Close the dialog
+            },
+              child: Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                color: Colors.red,
+                  borderRadius: BorderRadius.circular(10)
+                ),
+                child: Text("Cancel",style: TextStyle(color: Colors.white),),
+              ),
+            ),
+            GestureDetector(
+              onDoubleTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HospitalConfirmationReceipt(registrationNo: "42223210078",patientName: "shubham", department: "Cardology", disease: "Heart Attack", phone: "7303298030", email: "shubham.0202.in@gmail.com", bedNo: "276", bookingDate: "22-06-18", address: "narela delhi")));
+              },
+              child: Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(10)
+                ),
+                child: Text("Submit",style: TextStyle(color: Colors.white),),
+              ),
+onTap:  () {
+        Navigator.of(context).pop(); // Close the dialog
+        },          ),
+          ],
+        );
+      },
     );
   }
 }

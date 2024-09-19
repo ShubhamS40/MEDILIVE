@@ -64,7 +64,7 @@ class _WelcomescreenState extends State<Welcomescreen> {
                                 Container(
                                   padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
                                   decoration: BoxDecoration(
-                                    color: Colors.blue[900], // Light Blue Button Color
+                                    color: Colors.white, // Light Blue Button Color
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Center(
@@ -78,7 +78,7 @@ class _WelcomescreenState extends State<Welcomescreen> {
                                       child: Text(
                                         'Get Started',
                                         style: TextStyle(
-                                          color: Colors.white, // Light Text Color
+                                          color: Colors.blue[900], // Light Text Color
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold
                                         ),

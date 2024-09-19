@@ -47,7 +47,7 @@ class DepartmentSelection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Need an appointment?",
+                      "Check Bed Availability",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -55,11 +55,10 @@ class DepartmentSelection extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 16),
-                    _buildStep(Icons.add, "Select State/Hospital"),
-                    _buildStep(Icons.check_circle_outline, "Select Mode of Appointment"),
-                    _buildStep(Icons.check_circle_outline, "Select Appointment Type"),
-                    _buildStep(Icons.add, "Select Department"),
-                    _buildStep(Icons.calendar_today, "Select Date of Appointment"),
+                    _buildStep(Icons.local_hospital, "Select State/Hospital"),
+                    _buildStep(Icons.search, "Check Bed Availability"),
+                    _buildStep(Icons.local_offer_outlined, "Select Department"),
+                    _buildStep(Icons.calendar_today, "Select Date of Booking"),
                     _buildStep(Icons.person, "Register/Login"),
                     _buildStep(Icons.sms, "Get Confirmation SMS"),
                   ],
@@ -96,8 +95,8 @@ class DepartmentSelection extends StatelessWidget {
                             Text(
                               "Select Department",
                               style: TextStyle(
-                                fontSize: 24, // Increases the font size
-                                fontWeight: FontWeight.bold, // Makes the text bold
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                             SizedBox(height: 2),
